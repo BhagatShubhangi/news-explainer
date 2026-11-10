@@ -1,0 +1,37 @@
+[
+  {
+    "name": "BBC World",
+    "url": "http://feeds.bbci.co.uk/news/world/rss.xml",
+    "category": "World"
+  },
+  {
+    "name": "BBC Top Stories",
+    "url": "http://feeds.bbci.co.uk/news/rss.xml",
+    "category": "General"
+  },
+  {
+    "name": "NPR News",
+    "url": "https://feeds.npr.org/1001/rss.xml",
+    "category": "World / US"
+  },
+  {
+    "name": "The Hindu International",
+    "url": "https://www.thehindu.com/news/international/feeder/default.rss",
+    "category": "International"
+  },
+  {
+    "name": "The Hindu National",
+    "url": "https://www.thehindu.com/news/national/feeder/default.rss",
+    "category": "National"
+  },
+  {
+    "name": "Deutsche Welle",
+    "url": "https://rss.dw.com/rdf/rss-en-all",
+    "category": "World"
+  },
+  {
+    "name": "Al Jazeera",
+    "url": "https://www.aljazeera.com/xml/rss/all.xml",
+    "category": "World"
+  }
+]

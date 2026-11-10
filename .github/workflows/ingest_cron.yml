@@ -1,0 +1,38 @@
+name: Refresh News Feeds & Index
+
+on:
+  schedule:
+    # Runs every 6 hours (00:00, 06:00, 12:00, 18:00 UTC)
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  refresh-index:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install feedparser trafilatura qdrant-client fastembed dateparser
+
+      - name: Run news ingestion
+        run: |
+          python ingest.py
+
+      - name: Commit updated index (if using local storage or push to remote Qdrant)
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add qdrant_db/
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-refresh news index [skip ci]"
+          git push
+        continue-on-error: true
